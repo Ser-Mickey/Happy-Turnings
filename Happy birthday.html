@@ -264,7 +264,7 @@
         }
 
         /* ==========================================================================
-           ENVELOPE #06 CONSISTENT HEART CLIP REEL (ALL SCREENS & TVs)
+           ENVELOPE #06 SMOOTH EMOJI HEART CLIP REEL WITH DOUBLE WHITE BORDER
            ========================================================================== */
         .clip-stage {
             background: linear-gradient(145deg, #FFF7F5 0%, #F9E6E2 55%, #F5E5C8 100%);
@@ -273,21 +273,20 @@
         }
 
         .shaped-photo-box {
-            width: clamp(235px, 44vw, 380px);
+            width: clamp(245px, 46vw, 390px);
             aspect-ratio: 1 / 1;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #F9EBE8;
             animation: clipPopIn 0.6s cubic-bezier(0.22, 1.25, 0.36, 1) forwards;
-            filter: drop-shadow(0 12px 20px rgba(158, 78, 76, 0.22));
+            filter: drop-shadow(0 12px 22px rgba(158, 78, 76, 0.24));
         }
 
         @keyframes clipPopIn {
             0% {
                 opacity: 0;
-                transform: scale(0.78);
+                transform: scale(0.8);
             }
             70% {
                 opacity: 1;
@@ -299,6 +298,18 @@
             }
         }
 
+        .heart-clipped-surface {
+            width: 100%;
+            height: 100%;
+            background-color: #F9EBE8;
+            clip-path: url(#emoji-heart-clip);
+            -webkit-clip-path: url(#emoji-heart-clip);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
         .shaped-photo-img {
             width: 100%;
             height: 100%;
@@ -306,22 +317,12 @@
             image-rendering: -webkit-optimize-contrast;
         }
 
-        /* Consistent Love Heart Clip Shape across all slides and viewports */
-        .shape-heart {
-            clip-path: polygon(
-                50% 88%,
-                16% 58%,
-                4% 36%,
-                10% 17%,
-                26% 9%,
-                42% 15%,
-                50% 27%,
-                58% 15%,
-                74% 9%,
-                90% 17%,
-                96% 36%,
-                84% 58%
-            );
+        .heart-double-border-svg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
         }
 
         /* Custom Scrollbar for Letter Modal */
@@ -338,6 +339,15 @@
     </style>
 </head>
 <body class="antialiased selection:bg-[#EED5D0] selection:text-[#2E2424]">
+
+    <!-- Hidden SVG ClipPath Definition for Smooth Rounded Emoji Heart -->
+    <svg width="0" height="0" class="fixed pointer-events-none" aria-hidden="true">
+        <defs>
+            <clipPath id="emoji-heart-clip" clipPathUnits="objectBoundingBox">
+                <path d="M 0.50,0.89 C 0.48,0.89 0.08,0.63 0.08,0.34 C 0.08,0.18 0.20,0.08 0.34,0.08 C 0.42,0.08 0.48,0.13 0.50,0.19 C 0.52,0.13 0.58,0.08 0.66,0.08 C 0.80,0.08 0.92,0.18 0.92,0.34 C 0.92,0.63 0.52,0.89 0.50,0.89 Z" />
+            </clipPath>
+        </defs>
+    </svg>
 
     <!-- Subtle Floating Ambient Particles Canvas -->
     <canvas id="ambient-canvas"></canvas>
@@ -485,15 +495,15 @@
                         </div>
                     </div>
 
-                    <!-- 10-Photo Heart Clip Reel (Envelope #6) -->
+                    <!-- 9-Photo Smooth Emoji Heart Clip Reel (Envelope #6) -->
                     <div id="surprise-clip-reel" class="hidden clip-stage rounded-2xl p-5 sm:p-6 my-4 space-y-4">
                         <div class="flex items-center justify-between text-xs uppercase tracking-widest text-[#9E4E4C] font-semibold">
                             <span id="clip-shape-badge">❤️ Heart Clip</span>
-                            <span id="clip-counter">Photo 1 of 10</span>
+                            <span id="clip-counter">Photo 1 of 9</span>
                         </div>
 
-                        <div id="clip-animation-host" class="min-h-[250px] sm:min-h-[300px] flex flex-col items-center justify-center py-2">
-                            <!-- Heart-clipped photo is rendered here one by one -->
+                        <div id="clip-animation-host" class="min-h-[260px] sm:min-h-[320px] flex flex-col items-center justify-center py-2">
+                            <!-- Smooth emoji-heart photo with double white border rendered here -->
                         </div>
 
                         <p id="clip-caption" class="font-handwritten text-center text-2xl text-[#2E2424] min-h-[32px]">
@@ -632,8 +642,7 @@
                     { url: "Dearr.jpeg", caption: "6. Joy that never fades" },
                     { url: "Dearrr.jpeg", caption: "7. Smiling through it all" },
                     { url: "Dearrrr.jpeg", caption: "8. My favorite chapter" },
-                    { url: "Goofy 1.0.jpeg", caption: "9. Our goofy side undefeated" },
-                    { url: "goofy.jpg", caption: "10. All my heart belongs to you ❤️" }
+                    { url: "Goofy 1.0.jpeg", caption: "9. All my heart belongs to you ❤️" }
                 ],
                 paragraphs: [
                     "You unlocked it! Happy Birthday again, my love.",
@@ -647,7 +656,7 @@
         let unlockedSecret = false;
         let currentEnvelope = null;
 
-        // State for Envelope #6's 10-photo heart clip reel
+        // State for Envelope #6's 9-photo heart clip reel
         let clipIndex = 0;
         let clipTimer = null;
         let activeClipSlides = [];
@@ -773,260 +782,8 @@
             if (env.id === 6 && Array.isArray(env.surpriseSlides) && env.surpriseSlides.length > 0) {
                 photoContainer.classList.add("hidden");
                 surpriseReel.classList.remove("hidden");
-                activeClipSlides = env.surpriseSlides.slice(0, 10);
+                activeClipSlides = env.surpriseSlides.slice(0, 9);
                 startClipSequence(0, true);
             } else {
                 surpriseReel.classList.add("hidden");
                 if (env.photoUrl) {
-                    photoContainer.classList.remove("hidden");
-                    photoImg.src = env.photoUrl;
-                    photoCaption.textContent = env.photoCaption || "";
-                } else {
-                    photoContainer.classList.add("hidden");
-                }
-            }
-
-            const bodyContainer = document.getElementById("modal-body");
-            bodyContainer.innerHTML = env.paragraphs
-                .map(text => `<p>${text}</p>`)
-                .join("");
-
-            if (env.id === 6) {
-                triggerGentleConfetti();
-            }
-        }
-
-        function stopClipAutoPlay() {
-            if (clipTimer) {
-                clearInterval(clipTimer);
-                clipTimer = null;
-            }
-        }
-
-        function renderClipDots(total, current) {
-            const dotsHost = document.getElementById("clip-dots");
-            if (!dotsHost) return;
-            dotsHost.innerHTML = Array.from({ length: total }, (_, i) => {
-                const isActive = i === current;
-                const activeClasses = isActive
-                    ? "w-5 bg-[#9E4E4C]"
-                    : "w-2 bg-[#C59B5F]/45";
-                return `<button type="button" data-dot="${i}" aria-label="Show photo ${i + 1}" class="h-2 rounded-full transition-all duration-300 cursor-pointer ${activeClasses}"></button>`;
-            }).join("");
-
-            dotsHost.querySelectorAll("button[data-dot]").forEach((btn) => {
-                btn.addEventListener("click", () => {
-                    const targetIdx = Number(btn.getAttribute("data-dot"));
-                    stopClipAutoPlay();
-                    renderSingleClipSlide(targetIdx);
-                });
-            });
-        }
-
-        function renderSingleClipSlide(index) {
-            if (!activeClipSlides.length) return;
-            const total = activeClipSlides.length;
-            clipIndex = ((index % total) + total) % total;
-
-            const slide = activeClipSlides[clipIndex];
-            const host = document.getElementById("clip-animation-host");
-            const badge = document.getElementById("clip-shape-badge");
-            const counter = document.getElementById("clip-counter");
-            const caption = document.getElementById("clip-caption");
-
-            if (badge) badge.textContent = "❤️ Heart Clip";
-            if (counter) counter.textContent = `Photo ${clipIndex + 1} of ${total}`;
-            if (caption) caption.textContent = slide.caption || "";
-
-            renderClipDots(total, clipIndex);
-
-            if (host) {
-                host.innerHTML = "";
-                const box = document.createElement("div");
-                box.className = "shaped-photo-box shape-heart";
-
-                const img = document.createElement("img");
-                img.src = slide.url;
-                img.alt = slide.caption || `Surprise photo ${clipIndex + 1}`;
-                img.className = "shaped-photo-img";
-                img.onerror = function () {
-                    this.src = `https://placehold.co/800x800/F9EBE8/9E4E4C?text=Photo+${clipIndex + 1}`;
-                };
-
-                box.appendChild(img);
-                host.appendChild(box);
-            }
-
-            if (clipIndex === total - 1 && typeof confetti === "function") {
-                confetti({
-                    particleCount: 65,
-                    spread: 75,
-                    origin: { y: 0.65 }
-                });
-            }
-        }
-
-        function startClipSequence(startIndex = 0, autoAdvance = true) {
-            stopClipAutoPlay();
-            if (!activeClipSlides.length) return;
-
-            renderSingleClipSlide(startIndex);
-
-            if (autoAdvance) {
-                clipTimer = setInterval(() => {
-                    if (clipIndex + 1 < activeClipSlides.length) {
-                        renderSingleClipSlide(clipIndex + 1);
-                    } else {
-                        stopClipAutoPlay();
-                    }
-                }, CONFIG.clipIntervalMs);
-            }
-        }
-
-        function closeModal() {
-            stopClipAutoPlay();
-            const backdrop = document.getElementById("letter-modal-backdrop");
-            backdrop.classList.remove("active");
-            backdrop.setAttribute("aria-hidden", "true");
-            document.body.style.overflow = "";
-        }
-
-        function markAsOpened(id) {
-            if (!openedIds.includes(id)) {
-                openedIds.push(id);
-                localStorage.setItem(CONFIG.storageKey, JSON.stringify(openedIds));
-                updateProgress();
-                renderEnvelopes();
-            }
-        }
-
-        function updateProgress() {
-            const progressText = document.getElementById("progress-text");
-            if (progressText) {
-                progressText.textContent = `${openedIds.length} of ${ENVELOPES_DATA.length} envelopes opened`;
-            }
-        }
-
-        function bindEvents() {
-            document.getElementById("close-modal-btn").addEventListener("click", closeModal);
-            document.getElementById("letter-modal-backdrop").addEventListener("click", (e) => {
-                if (e.target.id === "letter-modal-backdrop") {
-                    closeModal();
-                }
-            });
-
-            document.addEventListener("keydown", (e) => {
-                if (e.key === "Escape") {
-                    closeModal();
-                }
-            });
-
-            document.getElementById("clip-prev-btn").addEventListener("click", () => {
-                stopClipAutoPlay();
-                renderSingleClipSlide(clipIndex - 1);
-            });
-
-            document.getElementById("clip-next-btn").addEventListener("click", () => {
-                stopClipAutoPlay();
-                renderSingleClipSlide(clipIndex + 1);
-            });
-
-            document.getElementById("clip-replay-btn").addEventListener("click", () => {
-                startClipSequence(0, true);
-            });
-
-            document.getElementById("passcode-form").addEventListener("submit", (e) => {
-                e.preventDefault();
-                if (!currentEnvelope) return;
-                const entered = document.getElementById("passcode-input").value.trim().toUpperCase();
-                const expected = (currentEnvelope.passcode || "LOVE").toUpperCase();
-
-                if (entered === expected) {
-                    unlockedSecret = true;
-                    document.getElementById("passcode-gate").classList.add("hidden");
-                    document.getElementById("letter-content-view").classList.remove("hidden");
-                    populateLetterContent(currentEnvelope);
-                    markAsOpened(currentEnvelope.id);
-                } else {
-                    document.getElementById("passcode-error").classList.remove("hidden");
-                }
-            });
-
-            document.getElementById("instant-reveal-btn").addEventListener("click", () => {
-                if (!currentEnvelope) return;
-                unlockedSecret = true;
-                document.getElementById("passcode-gate").classList.add("hidden");
-                document.getElementById("letter-content-view").classList.remove("hidden");
-                populateLetterContent(currentEnvelope);
-                markAsOpened(currentEnvelope.id);
-            });
-
-            document.getElementById("celebrate-btn").addEventListener("click", () => {
-                if (typeof confetti === "function") {
-                    confetti({
-                        particleCount: 90,
-                        spread: 75,
-                        origin: { y: 0.6 }
-                    });
-                }
-            });
-
-            document.getElementById("reset-progress-btn").addEventListener("click", () => {
-                openedIds = [];
-                unlockedSecret = false;
-                localStorage.removeItem(CONFIG.storageKey);
-                updateProgress();
-                renderEnvelopes();
-            });
-        }
-
-        function triggerGentleConfetti() {
-            if (typeof confetti === "function") {
-                confetti({
-                    particleCount: 35,
-                    spread: 60,
-                    origin: { y: 0.7 }
-                });
-            }
-        }
-
-        function initAmbientParticles() {
-            const canvas = document.getElementById("ambient-canvas");
-            if (!canvas) return;
-            const ctx = canvas.getContext("2d");
-
-            function resize() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-            resize();
-            window.addEventListener("resize", resize);
-
-            const dots = Array.from({ length: 24 }, () => ({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                r: Math.random() * 2.5 + 1,
-                dy: Math.random() * 0.4 + 0.15,
-                alpha: Math.random() * 0.35 + 0.1
-            }));
-
-            function draw() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                dots.forEach((d) => {
-                    ctx.beginPath();
-                    ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(200, 122, 120, ${d.alpha})`;
-                    ctx.fill();
-                    d.y -= d.dy;
-                    if (d.y < -10) {
-                        d.y = canvas.height + 10;
-                        d.x = Math.random() * canvas.width;
-                    }
-                });
-                requestAnimationFrame(draw);
-            }
-            draw();
-        }
-    </script>
-</body>
-</html>
