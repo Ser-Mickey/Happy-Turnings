@@ -305,9 +305,7 @@
             transition: clip-path 0.5s ease;
         }
 
-        /* Flower & Heart Clip Shapes (0 = 4-petal blossom, 1 = 5-petal flower, 2 = 6-petal daisy,
-           3 = 8-petal lotus, 4 = rounded petal star, 5 = clover/quatrefoil, 6 = pointed sun-flower,
-           7 = tulip/crown bloom, 8 = 10-petal bouquet burst, 9 = heart shape!) */
+        /* Flower & Heart Clip Shapes (Photos 1-9 = flowers, Photo 10 = love heart) */
         .shape-flower-0 {
             clip-path: polygon(
                 50% 3%, 62% 24%, 86% 14%, 76% 38%,
@@ -723,16 +721,16 @@
                 photoUrl: "https://placehold.co/600x450/F4E4E0/9E4E4C?text=Your+Birthday+Surprise!",
                 photoCaption: "Pack a smile—tonight is all yours",
                 surpriseSlides: [
-                    { url: "Be.jpeg", caption: "1. Where the magic started" },
-                    { url: "goofy.jpg", caption: "2. My favorite goofy grin" },
-                    { url: "Be.jpeg", caption: "3. Golden hour & soft smiles" },
-                    { url: "goofy.jpg", caption: "4. Laughing until our cheeks hurt" },
-                    { url: "Be.jpeg", caption: "5. Quiet moments that mean everything" },
-                    { url: "goofy.jpg", caption: "6. Never a dull second with you" },
-                    { url: "Be.jpeg", caption: "7. Every season feels brighter" },
-                    { url: "goofy.jpg", caption: "8. My favorite inside joke partner" },
-                    { url: "Be.jpeg", caption: "9. All the little things I adore" },
-                    { url: "Be.jpeg", caption: "10. All my heart belongs to you ❤️" }
+                    { url: "B.jpeg", caption: "1. A moment worth framing" },
+                    { url: "Be.jpeg", caption: "2. Right beside you always" },
+                    { url: "De.jpeg", caption: "3. Sweetest memory in bloom" },
+                    { url: "Dea.jpeg", caption: "4. Sunshine in every frame" },
+                    { url: "Dear.jpeg", caption: "5. Every little detail of us" },
+                    { url: "Dearr.jpeg", caption: "6. Joy that never fades" },
+                    { url: "Dearrr.jpeg", caption: "7. Smiling through it all" },
+                    { url: "Dearrrr.jpeg", caption: "8. My favorite chapter" },
+                    { url: "Goofy 1.0.jpeg", caption: "9. Our goofy side undefeated" },
+                    { url: "goofy.jpg", caption: "10. All my heart belongs to you ❤️" }
                 ],
                 paragraphs: [
                     "You unlocked it! Happy Birthday again, my love.",
@@ -870,7 +868,6 @@
             stopClipAutoPlay();
 
             if (env.id === 6 && Array.isArray(env.surpriseSlides) && env.surpriseSlides.length > 0) {
-                // Show 10-photo flower-to-heart clip reel for Envelope #6
                 photoContainer.classList.add("hidden");
                 surpriseReel.classList.remove("hidden");
                 activeClipSlides = env.surpriseSlides.slice(0, 10);
@@ -961,7 +958,6 @@
                 host.appendChild(box);
             }
 
-            // Extra celebration confetti when reaching the 10th heart-shaped photo
             if (clipIndex === total - 1 && typeof confetti === "function") {
                 confetti({
                     particleCount: 65,
@@ -982,7 +978,6 @@
                     if (clipIndex + 1 < activeClipSlides.length) {
                         renderSingleClipSlide(clipIndex + 1);
                     } else {
-                        // Hold on the final heart shape and stop auto-advancing
                         stopClipAutoPlay();
                     }
                 }, CONFIG.clipIntervalMs);
