@@ -263,6 +263,151 @@
             transform: rotate(0deg) scale(1.01);
         }
 
+        /* ==========================================================================
+           ENVELOPE #06 FLOWER-TO-HEART CLIP REEL
+           ========================================================================== */
+        .clip-stage {
+            background: linear-gradient(145deg, #FFF7F5 0%, #F9E6E2 55%, #F5E5C8 100%);
+            border: 1px solid rgba(197, 155, 95, 0.35);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.85), 0 10px 25px rgba(158, 78, 76, 0.1);
+        }
+
+        .shaped-photo-box {
+            width: 240px;
+            height: 240px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: clipPopIn 0.65s cubic-bezier(0.22, 1.35, 0.36, 1) forwards;
+            filter: drop-shadow(0 10px 18px rgba(158, 78, 76, 0.22));
+        }
+
+        @keyframes clipPopIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.55) rotate(-14deg);
+            }
+            65% {
+                opacity: 1;
+                transform: scale(1.05) rotate(2deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .shaped-photo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: clip-path 0.5s ease;
+        }
+
+        /* Flower & Heart Clip Shapes (Photos 1-9 = flowers, Photo 10 = love heart) */
+        .shape-flower-0 {
+            clip-path: polygon(
+                50% 3%, 62% 24%, 86% 14%, 76% 38%,
+                97% 50%, 76% 62%, 86% 86%, 62% 76%,
+                50% 97%, 38% 76%, 14% 86%, 24% 62%,
+                3% 50%, 24% 38%, 14% 14%, 38% 24%
+            );
+        }
+
+        .shape-flower-1 {
+            clip-path: polygon(
+                50% 2%, 65% 27%, 95% 21%, 79% 46%,
+                96% 73%, 67% 72%, 69% 98%, 50% 80%,
+                31% 98%, 33% 72%, 4% 73%, 21% 46%,
+                5% 21%, 35% 27%
+            );
+        }
+
+        .shape-flower-2 {
+            clip-path: polygon(
+                50% 2%, 63% 21%, 88% 11%, 82% 36%,
+                99% 50%, 82% 64%, 88% 89%, 63% 79%,
+                50% 98%, 37% 79%, 12% 89%, 18% 64%,
+                1% 50%, 18% 36%, 12% 11%, 37% 21%
+            );
+        }
+
+        .shape-flower-3 {
+            clip-path: polygon(
+                50% 3%, 61% 22%, 79% 9%, 75% 30%,
+                96% 33%, 81% 50%, 96% 67%, 75% 70%,
+                79% 91%, 61% 78%, 50% 97%, 39% 78%,
+                21% 91%, 25% 70%, 4% 67%, 19% 50%,
+                4% 33%, 25% 30%, 21% 9%, 39% 22%
+            );
+        }
+
+        .shape-flower-4 {
+            clip-path: polygon(
+                50% 5%, 64% 31%, 93% 26%, 76% 50%,
+                93% 74%, 64% 69%, 50% 95%, 36% 69%,
+                7% 74%, 24% 50%, 7% 26%, 36% 31%
+            );
+        }
+
+        .shape-flower-5 {
+            clip-path: polygon(
+                50% 4%, 66% 18%, 88% 12%, 82% 34%,
+                96% 50%, 82% 66%, 88% 88%, 66% 82%,
+                50% 96%, 34% 82%, 12% 88%, 18% 66%,
+                4% 50%, 18% 34%, 12% 12%, 34% 18%
+            );
+        }
+
+        .shape-flower-6 {
+            clip-path: polygon(
+                50% 0%, 60% 25%, 83% 10%, 74% 35%,
+                100% 38%, 79% 55%, 94% 78%, 68% 72%,
+                72% 98%, 50% 80%, 28% 98%, 32% 72%,
+                6% 78%, 21% 55%, 0% 38%, 26% 35%,
+                17% 10%, 40% 25%
+            );
+        }
+
+        .shape-flower-7 {
+            clip-path: polygon(
+                50% 6%, 68% 20%, 92% 16%, 84% 42%,
+                95% 65%, 74% 78%, 62% 96%, 50% 85%,
+                38% 96%, 26% 78%, 5% 65%, 16% 42%,
+                8% 16%, 32% 20%
+            );
+        }
+
+        .shape-flower-8 {
+            clip-path: polygon(
+                50% 2%, 60% 20%, 78% 7%, 75% 27%,
+                95% 26%, 83% 44%, 98% 58%, 80% 68%,
+                87% 88%, 67% 81%, 59% 98%, 50% 83%,
+                41% 98%, 33% 81%, 13% 88%, 20% 68%,
+                2% 58%, 17% 44%, 5% 26%, 25% 27%,
+                22% 7%, 40% 20%
+            );
+        }
+
+        /* 10th Photo: Love Heart Clip Shape */
+        .shape-heart {
+            clip-path: polygon(
+                50% 88%,
+                16% 58%,
+                4% 36%,
+                10% 17%,
+                26% 9%,
+                42% 15%,
+                50% 27%,
+                58% 15%,
+                74% 9%,
+                90% 17%,
+                96% 36%,
+                84% 58%
+            );
+        }
+
         /* Custom Scrollbar for Letter Modal */
         .letter-scroll::-webkit-scrollbar {
             width: 6px;
@@ -292,7 +437,6 @@
                 <span>✨ A Love Capsule For You</span>
             </div>
             
-            <!-- CUSTOMIZE HER NAME / TITLE HERE -->
             <h1 id="main-title" class="font-serif-editorial text-4xl sm:text-5xl md:text-6xl font-bold text-[#2E2424] tracking-tight leading-tight mb-4">
                 Happy Birthday, My Love
             </h1>
@@ -407,7 +551,7 @@
                         </span>
                     </div>
 
-                    <!-- Optional Polaroid Photo Frame -->
+                    <!-- Standard Single Polaroid Photo Frame (Envelopes 1-5) -->
                     <div id="modal-photo-container" class="max-w-sm mx-auto my-4">
                         <div class="polaroid-frame rounded-lg">
                             <div class="aspect-[4/3] w-full overflow-hidden rounded bg-[#F9EBE8]">
@@ -422,6 +566,38 @@
                             <p id="modal-photo-caption" class="font-handwritten text-center text-xl text-[#6E5D5D] mt-2">
                                 One of my favorite moments with you
                             </p>
+                        </div>
+                    </div>
+
+                    <!-- 10-Photo Flower-to-Heart Clip Reel (Envelope #6) -->
+                    <div id="surprise-clip-reel" class="hidden clip-stage rounded-2xl p-5 sm:p-6 my-4 space-y-4">
+                        <div class="flex items-center justify-between text-xs uppercase tracking-widest text-[#9E4E4C] font-semibold">
+                            <span id="clip-shape-badge">🌸 Flower Clip</span>
+                            <span id="clip-counter">Photo 1 of 10</span>
+                        </div>
+
+                        <div id="clip-animation-host" class="min-h-[255px] flex flex-col items-center justify-center py-2">
+                            <!-- Shaped photo is rendered here one by one -->
+                        </div>
+
+                        <p id="clip-caption" class="font-handwritten text-center text-2xl text-[#2E2424] min-h-[32px]">
+                            Every petal holds a favorite memory
+                        </p>
+
+                        <!-- Progress Dots -->
+                        <div id="clip-dots" class="flex items-center justify-center gap-1.5 pt-1"></div>
+
+                        <!-- Clip Controls -->
+                        <div class="flex flex-wrap items-center justify-center gap-2.5 pt-2">
+                            <button id="clip-prev-btn" type="button" class="px-3.5 py-1.5 rounded-full bg-white/90 hover:bg-white border border-[#EED5D0] text-xs font-medium text-[#2E2424] transition-colors cursor-pointer">
+                                ← Prev
+                            </button>
+                            <button id="clip-replay-btn" type="button" class="px-4 py-1.5 rounded-full bg-[#C87A78] hover:bg-[#9E4E4C] text-white text-xs font-medium shadow-sm transition-colors cursor-pointer">
+                                ↻ Play Clip Again
+                            </button>
+                            <button id="clip-next-btn" type="button" class="px-3.5 py-1.5 rounded-full bg-white/90 hover:bg-white border border-[#EED5D0] text-xs font-medium text-[#2E2424] transition-colors cursor-pointer">
+                                Next →
+                            </button>
                         </div>
                     </div>
 
@@ -451,8 +627,22 @@
             mainTitle: "Happy Birthday, My Love",
             mainSubtitle: "Because one birthday wish isn't nearly enough. Here are six letters written just for you—open each envelope whenever the moment feels right.",
             signature: "Yours Always ❤️",
-            storageKey: "birthday_open_when_capsule_v1"
+            storageKey: "birthday_open_when_capsule_v1",
+            clipIntervalMs: 1850
         };
+
+        const SURPRISE_CLIP_SHAPES = [
+            { cssClass: "shape-flower-0", label: "🌸 Four-Petal Blossom" },
+            { cssClass: "shape-flower-1", label: "🌺 Wildflower Bloom" },
+            { cssClass: "shape-flower-2", label: "🌼 Sunny Daisy" },
+            { cssClass: "shape-flower-3", label: "🪷 Lotus Petals" },
+            { cssClass: "shape-flower-4", label: "🌷 Star-Petal Bloom" },
+            { cssClass: "shape-flower-5", label: "🍀 Lucky Quatrefoil" },
+            { cssClass: "shape-flower-6", label: "🌻 Sunburst Flower" },
+            { cssClass: "shape-flower-7", label: "🌹 Crown Petal Bloom" },
+            { cssClass: "shape-flower-8", label: "💐 Ten-Petal Bouquet" },
+            { cssClass: "shape-heart", label: "❤️ Love Heart Finale" }
+        ];
 
         const ENVELOPES_DATA = [
             {
@@ -486,7 +676,7 @@
                 label: "Open when you need a laugh",
                 sealIcon: "😂",
                 dateStamp: "Emergency Smile Kit",
-                photoUrl: "gooffy.jpg",
+                photoUrl: "goofy.jpg",
                 photoCaption: "Still undefeated at making each other laugh",
                 paragraphs: [
                     "Stop whatever serious thing you're doing right now and picture the most ridiculous inside joke we share. Yes, that one.",
@@ -530,6 +720,18 @@
                 passcodeHint: "Hint: Type the 4-letter word 'LOVE' (or tap reveal below!)",
                 photoUrl: "https://placehold.co/600x450/F4E4E0/9E4E4C?text=Your+Birthday+Surprise!",
                 photoCaption: "Pack a smile—tonight is all yours",
+                surpriseSlides: [
+                    { url: "B.jpeg", caption: "1. A moment worth framing" },
+                    { url: "Be.jpeg", caption: "2. Right beside you always" },
+                    { url: "De.jpeg", caption: "3. Sweetest memory in bloom" },
+                    { url: "Dea.jpeg", caption: "4. Sunshine in every frame" },
+                    { url: "Dear.jpeg", caption: "5. Every little detail of us" },
+                    { url: "Dearr.jpeg", caption: "6. Joy that never fades" },
+                    { url: "Dearrr.jpeg", caption: "7. Smiling through it all" },
+                    { url: "Dearrrr.jpeg", caption: "8. My favorite chapter" },
+                    { url: "Goofy 1.0.jpeg", caption: "9. Our goofy side undefeated" },
+                    { url: "goofy.jpg", caption: "10. All my heart belongs to you ❤️" }
+                ],
                 paragraphs: [
                     "You unlocked it! Happy Birthday again, my love.",
                     "Here is your official birthday voucher: Tonight, dinner, dessert, and every single plan are completely taken care of—all you have to do is get dressed up and let me spoil you.",
@@ -541,6 +743,11 @@
         let openedIds = JSON.parse(localStorage.getItem(CONFIG.storageKey)) || [];
         let unlockedSecret = false;
         let currentEnvelope = null;
+
+        // State for Envelope #6's 10-photo flower-to-heart clip reel
+        let clipIndex = 0;
+        let clipTimer = null;
+        let activeClipSlides = [];
 
         document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("main-title").textContent = CONFIG.mainTitle;
@@ -631,6 +838,7 @@
             document.getElementById("modal-tag").textContent = `Envelope #0${env.id}`;
 
             if (env.isLocked && !unlockedSecret) {
+                stopClipAutoPlay();
                 passcodeGate.classList.remove("hidden");
                 letterView.classList.add("hidden");
                 document.getElementById("passcode-hint").textContent = env.passcodeHint || "Enter the secret passcode to unlock.";
@@ -655,13 +863,24 @@
             const photoContainer = document.getElementById("modal-photo-container");
             const photoImg = document.getElementById("modal-photo");
             const photoCaption = document.getElementById("modal-photo-caption");
+            const surpriseReel = document.getElementById("surprise-clip-reel");
 
-            if (env.photoUrl) {
-                photoContainer.classList.remove("hidden");
-                photoImg.src = env.photoUrl;
-                photoCaption.textContent = env.photoCaption || "";
-            } else {
+            stopClipAutoPlay();
+
+            if (env.id === 6 && Array.isArray(env.surpriseSlides) && env.surpriseSlides.length > 0) {
                 photoContainer.classList.add("hidden");
+                surpriseReel.classList.remove("hidden");
+                activeClipSlides = env.surpriseSlides.slice(0, 10);
+                startClipSequence(0, true);
+            } else {
+                surpriseReel.classList.add("hidden");
+                if (env.photoUrl) {
+                    photoContainer.classList.remove("hidden");
+                    photoImg.src = env.photoUrl;
+                    photoCaption.textContent = env.photoCaption || "";
+                } else {
+                    photoContainer.classList.add("hidden");
+                }
             }
 
             const bodyContainer = document.getElementById("modal-body");
@@ -674,7 +893,99 @@
             }
         }
 
+        function stopClipAutoPlay() {
+            if (clipTimer) {
+                clearInterval(clipTimer);
+                clipTimer = null;
+            }
+        }
+
+        function renderClipDots(total, current) {
+            const dotsHost = document.getElementById("clip-dots");
+            if (!dotsHost) return;
+            dotsHost.innerHTML = Array.from({ length: total }, (_, i) => {
+                const isActive = i === current;
+                const isHeartDot = i === total - 1;
+                const activeClasses = isActive
+                    ? "w-5 bg-[#9E4E4C]"
+                    : isHeartDot
+                        ? "w-2 bg-[#C87A78]/70"
+                        : "w-2 bg-[#C59B5F]/40";
+                return `<button type="button" data-dot="${i}" aria-label="Show photo ${i + 1}" class="h-2 rounded-full transition-all duration-300 cursor-pointer ${activeClasses}"></button>`;
+            }).join("");
+
+            dotsHost.querySelectorAll("button[data-dot]").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const targetIdx = Number(btn.getAttribute("data-dot"));
+                    stopClipAutoPlay();
+                    renderSingleClipSlide(targetIdx);
+                });
+            });
+        }
+
+        function renderSingleClipSlide(index) {
+            if (!activeClipSlides.length) return;
+            const total = activeClipSlides.length;
+            clipIndex = ((index % total) + total) % total;
+
+            const slide = activeClipSlides[clipIndex];
+            const shapeMeta = SURPRISE_CLIP_SHAPES[clipIndex % SURPRISE_CLIP_SHAPES.length];
+            const host = document.getElementById("clip-animation-host");
+            const badge = document.getElementById("clip-shape-badge");
+            const counter = document.getElementById("clip-counter");
+            const caption = document.getElementById("clip-caption");
+
+            if (badge) badge.textContent = shapeMeta.label;
+            if (counter) counter.textContent = `Photo ${clipIndex + 1} of ${total}`;
+            if (caption) caption.textContent = slide.caption || "";
+
+            renderClipDots(total, clipIndex);
+
+            if (host) {
+                host.innerHTML = "";
+                const box = document.createElement("div");
+                box.className = "shaped-photo-box";
+
+                const img = document.createElement("img");
+                img.src = slide.url;
+                img.alt = slide.caption || `Surprise photo ${clipIndex + 1}`;
+                img.className = `shaped-photo-img ${shapeMeta.cssClass}`;
+                img.onerror = function () {
+                    this.src = `https://placehold.co/400x400/F9EBE8/9E4E4C?text=Photo+${clipIndex + 1}`;
+                };
+
+                box.appendChild(img);
+                host.appendChild(box);
+            }
+
+            if (clipIndex === total - 1 && typeof confetti === "function") {
+                confetti({
+                    particleCount: 65,
+                    spread: 75,
+                    origin: { y: 0.65 }
+                });
+            }
+        }
+
+        function startClipSequence(startIndex = 0, autoAdvance = true) {
+            stopClipAutoPlay();
+            if (!activeClipSlides.length) return;
+
+            renderSingleClipSlide(startIndex);
+
+            if (autoAdvance) {
+                clipTimer = setInterval(() => {
+                    if (clipIndex + 1 < activeClipSlides.length) {
+                        renderSingleClipSlide(clipIndex + 1);
+                    } else {
+                        stopClipAutoPlay();
+                    }
+                }, CONFIG.clipIntervalMs);
+            }
+        }
+
         function closeModal() {
+            stopClipAutoPlay();
             const backdrop = document.getElementById("letter-modal-backdrop");
             backdrop.classList.remove("active");
             backdrop.setAttribute("aria-hidden", "true");
@@ -709,6 +1020,20 @@
                 if (e.key === "Escape") {
                     closeModal();
                 }
+            });
+
+            document.getElementById("clip-prev-btn").addEventListener("click", () => {
+                stopClipAutoPlay();
+                renderSingleClipSlide(clipIndex - 1);
+            });
+
+            document.getElementById("clip-next-btn").addEventListener("click", () => {
+                stopClipAutoPlay();
+                renderSingleClipSlide(clipIndex + 1);
+            });
+
+            document.getElementById("clip-replay-btn").addEventListener("click", () => {
+                startClipSequence(0, true);
             });
 
             document.getElementById("passcode-form").addEventListener("submit", (e) => {
